@@ -12,7 +12,7 @@ class App extends React.Component {
   constructor() {
     super();
     console.log("Constructor");
-    this.state = null;
+    this.state = {games: []};
   }
 
   componentDidMount() {
@@ -20,22 +20,16 @@ class App extends React.Component {
       .then(result => {
         return result.json();
       })
-      .then(data => {
-        console.log(data);
-      })
+      .then(data => this.setState({ games: data }))
   }
 
   render() {
-    function createContent() {
-      return <Game title="Zelda" />
-    }
-
     return (
       <div className="App">
         <h2> Vote for your favorite game on Nintendo Switch</h2>
         <div class="container">
           <div class="row">
-            <Game title="Zelda111" image="https://m.media-amazon.com/images/I/511M6ML2t7L._AC_UY218_ML3_.jpg" vote="0"/>
+            {this.state.games.map(game => <Game title={game.title} image={game.image} vote={game.vote}/>)}
           </div>
         </div>
 
@@ -46,3 +40,4 @@ class App extends React.Component {
 
 export default App;
 // <Game brand="Ford"/>
+// <Game title="Zelda111" image="https://m.media-amazon.com/images/I/511M6ML2t7L._AC_UY218_ML3_.jpg" vote="0"/>
