@@ -18,7 +18,7 @@ class Game extends React.Component {
 
   render() {
     return (
-      <div class="col-lg-2 col-md-4 col-sm-4 col-6">
+      <div class="col-lg-2 col-md-4 col-sm-4 col-6 cell">
       <div class="card">
       <img src={this.props.image} alt={this.props.title} className="img-responsive"/>
         <div class="card-body">
